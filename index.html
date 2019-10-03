@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <link href='./src/index.css' rel='stylesheet'>
+    <link href="./src/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <img class="left-bottom" src="./img/left-bottom.png" alt="">
+    <img class="right-top" src="./img/right-top.png" alt="">
+    <img class="logo" src="./img/logo.png" alt="">
+    <div class="content">
+        <h1 class="title">COUNTDOWN</h1>
+        <h1 id="h1">00:00:00</h1>
+    </div>
+    <div class="utils">
+
+        <!-- <div id="button3">开始</div> -->
+
+        <!-- <button id="button">暂停</button>
+        <button id="button2">恢复</button> -->
+    </div>
+
+</body>
+<script src="src/CountDown.js"></script>
+<script src="src//sweetalert2.all.min.js"></script>
+<script>
+    document.querySelector(".logo").addEventListener("click", function () {
+        swal({
+            title: '<strong>请输入结束时间</strong>',
+            html: `<br /><input type="text" placeholder="0000" id="year"><span class="divide">/</span>
+            <input type="text" placeholder="00" id="month"><span class="divide">/</span>
+            <input type="text" placeholder="00" id="day"><br /><br />
+            <input type="text" placeholder="00" id="hour"><span class="divide">:</span>
+                <input type="text" placeholder="00" id="minute"><span class="divide">:</span>
+                <input type="text" placeholder="00" id=second>
+            `,
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> 开始',
+            onOpen: function () {
+                document.querySelector("#year").focus()
+            },
+            preConfirm: function() {
+                var year = parseInt(document.querySelector("#year").value);
+                var month = parseInt(document.querySelector("#month").value);
+                var day = parseInt(document.querySelector("#day").value);
+                var hour = parseInt(document.querySelector("#hour").value);
+                var minute = parseInt(document.querySelector("#minute").value);
+                var second = parseInt(document.querySelector("#second").value);
+                // function startTime (seconds){
+                //     if (hour < 10) hour = `0${hour}`;
+                //     if (minute < 10) minute = `0${minute}`;
+                //     if (second < 10) second = `0${second}`;
+                //     document.getElementById('h1').innerText = `${hour}:${minute}:${second}`;
+                //     CountDown.startBySign({
+                //         Ele: document.getElementById('h1'),
+                //         CountDownSeconds: seconds,
+                //         Divider: ':',
+                //         EndFunc: function () {
+                //             console.log('end');
+                //         }
+                //     });
+                // }
+                function startDate(endDate){
+                    var startDate = new Date();
+                    CountDown.openTimeCountByStartAndEndDate({
+                        Ele: document.getElementById('h1'),
+                        StartDate: startDate,
+                        EndDate: endDate,
+                        Sign: 'flypie',
+                        Divider: ':',
+                        EndFunc: function () {
+                            console.log('end');
+                        },
+                        additionToggle: {
+                            seconds: 10,
+                            callback: function () {
+                                // alert('soon');
+                            }
+                        }
+                    })
+                }
+                if (!isNaN(hour) && !isNaN(minute) && !isNaN(second) && !isNaN(year) && !isNaN(month) && !isNaN(day)) {
+                    // var seconds = hour * 60 * 60 + minute * 60 + second;
+                    // startTime(time);
+                var endDate = new Date(year,month - 1,day,hour,minute,second);
+                startDate(endDate);
+                }else if(isNaN(hour) || isNaN(minute) || isNaN(second) || isNaN(year) || isNaN(month) || isNaN(day)){
+                    if(isNaN(hour)){
+                        hour = 16;
+                    }
+                    if(isNaN(minute)){
+                        minute = 0;
+                    }
+                    if(isNaN(second)){
+                        second = 0;
+                    }
+                    if(isNaN(year)){
+                        year = 2018;
+                    }
+                    if(isNaN(month)) month = 11;
+                    if(isNaN(day)) day = 3;
+
+                    // var seconds = hour * 60 * 60 + minute * 60 + second;
+                    // startTime(seconds);
+                    var endDate = new Date(year,month - 1,day,hour,minute,second);
+                    console.log(endDate)
+                    startDate(endDate)
+                }
+            }
+        })
+    })
+</script>
+
+</html>

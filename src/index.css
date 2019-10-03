@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0'
+}
+@font-face
+{
+    font-family: 'SourceHanSansCN-Heavy';
+    src: url('./SourceHanSansCN-Heavy.otf');
+}
+h1,strong{
+    font-family:'SourceHanSansCN-Heavy';
+}
+
+input{
+    width: 50px;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+button{
+    color: #333;
+    background-color: #fff;
+    border:1px solid #ccc;
+    display: inline-block;
+    padding: 8px 25px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 4px;
+    margin-top: -3px;
+}
+button:hover{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.left-bottom{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.right-top{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.logo{
+    position: absolute;
+    top: 64px;
+    left: 64px;
+    width: 150px;
+    cursor: pointer;
+}
+.content{
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.title{
+    position: absolute;
+    top: -17%;
+    left: .625rem /* 10/16 */;
+    font-size: 5rem /* 80/16 */;
+    color: rgba(34, 187, 255, 0.44);
+}
+#h1{
+    font-size: 17.5rem /* 280/16 */;
+    color: #1b78dd;
+}
+.divide{
+    margin-left: 4px;
+}
